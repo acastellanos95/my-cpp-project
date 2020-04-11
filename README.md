@@ -1,2 +1,2 @@
 # my-cpp-project
-My first C++ projects
+My first C++ project
