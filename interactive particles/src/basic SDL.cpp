@@ -22,9 +22,9 @@ int main() {
 		//update
 		//draw
 		int elapsed = SDL_GetTicks();
-		unsigned char red= (unsigned char) (1 + cos(elapsed*0.0001))*128;
-		unsigned char green = (unsigned char) (1 + sin(elapsed*0.0002))*128;
-		unsigned char blue = (unsigned char) (1 + sin(elapsed*0.0003))*128;
+		unsigned char red= (unsigned char) ((1 + cos(elapsed*0.0001))*128);
+		unsigned char green = (unsigned char) ((1 + sin(elapsed*0.0002))*128);
+		unsigned char blue = (unsigned char) ((1 + sin(elapsed*0.0003))*128);
 		for(int i=0; i<screen.SCREEN_HEIGHT; i++){
 			for(int j=0; j<screen.SCREEN_WIDTH; j++){
 				screen.setPixel(j,i,red,green,blue);
