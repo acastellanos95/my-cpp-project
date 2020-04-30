@@ -12,10 +12,9 @@ bool Screen::init(){
 	if(SDL_Init(SDL_INIT_VIDEO)<0){
 			return false;
 	}
-	this->m_window = SDL_CreateWindow("interactive particles", SDL_WINDOWPOS_UNDEFINED,
-			 SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL);
+	m_window = SDL_CreateWindow("interactive particles", SDL_WINDOWPOS_UNDEFINED,
+			 SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 	if(m_window == nullptr){
-		SDL_GetError();
 		SDL_Quit();
 		return false;
 	}
@@ -29,7 +28,7 @@ bool Screen::init(){
 	}
 	if(m_texture == nullptr){
 		SDL_DestroyWindow(m_window);
-		SDL_DestroyTexture(m_texture);
+		SDL_DestroyRenderer(m_renderer);
 		SDL_Quit();
 		return false;
 	}
@@ -44,6 +43,8 @@ void Screen::update(){
 	SDL_RenderPresent(m_renderer);
 }
 void Screen::setPixel(int x, int y, Uint8 red, Uint8 green, Uint8 blue){
+	if(x < 0 || x >= SCREEN_WIDTH || y<0 || y >= SCREEN_HEIGHT) return;
+
 	Uint32 color = 0;
 	color += red;
 	color <<= 8;
@@ -71,6 +72,11 @@ void Screen::close(){
 	SDL_DestroyWindow(m_window);
 	SDL_Quit();
 }
+
+void Screen::clear(){
+	memset(m_buffer, 0, SCREEN_WIDTH*SCREEN_HEIGHT*sizeof(Uint32));
+}
+
 Screen::Screen() : m_window(nullptr), m_renderer(nullptr), m_texture(nullptr), m_buffer(nullptr){ }
 
 Screen::~Screen() {
