@@ -16,7 +16,7 @@
 using namespace std;
 using namespace project;
 
-int main() {
+int main(){
 
 	srand(time(nullptr));
 
@@ -30,7 +30,6 @@ int main() {
 		//update
 		//draw
 		int elapsed = SDL_GetTicks();
-<<<<<<< HEAD
 
 		screen.clear();
 		swarm.update();
@@ -48,15 +47,6 @@ int main() {
 			int y = (particle.m_y + 1) * Screen::SCREEN_HEIGHT / 2;
 
 			screen.setPixel(x, y, red, green, blue);
-=======
-		unsigned char red= (unsigned char) ((1 + cos(elapsed*0.0001))*128);
-		unsigned char green = (unsigned char) ((1 + sin(elapsed*0.0002))*128);
-		unsigned char blue = (unsigned char) ((1 + sin(elapsed*0.0003))*128);
-		for(int i=0; i<screen.SCREEN_HEIGHT; i++){
-			for(int j=0; j<screen.SCREEN_WIDTH; j++){
-				screen.setPixel(j,i,red,green,blue);
-			}
->>>>>>> f60c25e73169e21578fb35fcc321c0e8526255c8
 		}
 
 		screen.update();
