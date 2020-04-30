@@ -11,14 +11,17 @@
 namespace project {
 
 struct Particle {
-	double m_xspeed;
-	double m_yspeed;
+public:
 	double m_x;
 	double m_y;
-	void update();
+
+	void update(int interval);
 	Particle();
 	virtual ~Particle();
-
+private:
+	double m_speed;
+	double m_direction;
+	void init();
 };
 
 } /* namespace project */

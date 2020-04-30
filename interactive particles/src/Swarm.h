@@ -15,10 +15,12 @@ namespace project {
 class Swarm {
 private:
 	Particle* m_pParticles;
+	int m_last_time;
+
 public:
-	const static int NPARTICLES = 2000;
+	const static int NPARTICLES = 5000;
 	const Particle* const getParticles(){return m_pParticles;}
-	void update();
+	void update(int elapsed);
 	Swarm();
 	virtual ~Swarm();
 };
